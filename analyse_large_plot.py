@@ -31,6 +31,77 @@ max_ch_3_end_index = 3100
 min_ch_3_start_index = 6350
 min_ch_3_end_index = 6500
 
+data = pd.read_csv('reduced_data.csv', index_col=0)
+
+# determine the min and the max of the triangular ramp
+max_ramp_timestamp = data[max_ch_3_start_index:max_ch_3_end_index].max()['high_time']
+min_ramp_timestamp = data[min_ch_3_start_index:min_ch_3_end_index].min()['high_time']
+
+# there are three ramps and they can be transformed into three pictures of the same ramp
+# for that the max and the min value are taken as cut points
+ramp_0 = data.where(data['high_time'] < max_ramp_timestamp)
+ramp_0 = ramp_0.dropna(axis=0)
+print(ramp_0)
+
+ramp_1 = data.where((data['high_time'] > max_ramp_timestamp)
+                    & (data['high_time'] < min_ramp_timestamp))
+ramp_1 = ramp_1.dropna(axis=0)
+print(ramp_1)
+
+ramp_2 = data.where(data['high_time'] > min_ramp_timestamp)
+ramp_2 = ramp_2.dropna(axis=0)
+print(ramp_2)
+
+# correct the time shifts
+ramp_0['high_time'] = (ramp_0['high_time'] - max_ramp_timestamp) * (-1)
+ramp_0['low_time'] = (ramp_0['low_time'] - max_ramp_timestamp) * (-1)
+
+ramp_1['high_time'] = ramp_1['high_time'] - max_ramp_timestamp
+ramp_1['low_time'] = ramp_1['low_time'] - max_ramp_timestamp
+
+ramp_2['high_time'] = (ramp_2['high_time'] - min_ramp_timestamp) * (-1)
+ramp_2['low_time'] = (ramp_2['low_time'] - min_ramp_timestamp) * (-1)
+ramp_2['high_time'] -= ramp_2.iloc[-1]['low_time']
+ramp_2['low_time'] -= ramp_2.iloc[-1]['low_time']
+
+# we now have three sets of data
+ramps = [ramp_0, ramp_1, ramp_2]
+mean_spike_dist = []
+spike_pos_std = []
+spike_dist_std = []
+for ramp in ramps:
+    spike_sections = [(0.001, 0.003), (0.0035, 0.0055), (0.006, 0.008), (0.0085, 0.0105), (0.011, 0.013)]
+    spike_width = 0.0003
+    spike_params = []
+    for spike in train:
+        sd = data.loc[:, ['low_time', 'high_time', 'ch2', 'std_ch2']]
+        sd = sd.where((sd['low_time'] > sd.loc[spike[0]]['low_time']) &
+                      (sd['low_time'] < sd.loc[spike[1]]['low_time']))
+        sd = sd.dropna(axis=0)
+
+        mean_time = (sd['high_time'] + sd['low_time'])/2
+        # the middle train needs to be mirrored
+        mean_time = mean_time * mf
+        gplot_time = np.linspace(min(mean_time), max(mean_time), 5000)
+
+        spike_height = max(sd['ch2'])
+        max_time = float(sd.where(sd['ch2'] == spike_height)['high_time'].dropna())
+
+        plt.plot(mean_time, sd['ch2'], marker='.', color='blue', linestyle='')
+        spopt, spcov = curve_fit(lorenzian, mean_time, sd['ch2'], p0=(spike_width, max_time, spike_width*spike_height/2, 0))
+        spike_params.append((spopt, spcov))
+        plt.plot(gplot_time, lorenzian(gplot_time, *spopt), linestyle='--', color='blue')
+        plt.show()
+    peak_t = []
+    for param_set in spike_params:
+        # this is the reference frequency
+        peak_t.append(param_set[0][1])
+        # this is the std_dev in the covariance matrix
+        spike_pos_std.append(param_set[1][1][1])
+
+    mean_spike_dist.append(np.mean(np.array(peak_t[1:]) - np.array(peak_t[:-1])))
+
+
 # now, to fit the falling ramp, the resonance absorption peaks have to be
 # removed (the background is being fitted)
 # the format is one tuple per peak with the
@@ -44,14 +115,6 @@ cuts_in_peak_region = [11, 4.5, 1.3]
 fitfunc = [doubble_gaussian, gaussian, gaussian]
 data = pd.read_csv('reduced_data.csv')
 
-# get the timestamp and the ch3 (absorption signal) data together for
-# the slope fit
-slope_fit_data = data.loc[:, ['low_time', 'high_time', 'ch3', 'std_ch3']]
-
-# determine the min and the max of the triangular ramp
-max_ramp_timestamp = slope_fit_data[max_ch_3_start_index:max_ch_3_end_index].max()['high_time']
-min_ramp_timestamp = slope_fit_data[min_ch_3_start_index:min_ch_3_end_index].min()['high_time']
-
 # cut out the data
 slope_fit_data = slope_fit_data.where((data['high_time'] > max_ramp_timestamp) &
                                       (data['high_time'] < min_ramp_timestamp))
@@ -59,7 +122,7 @@ for peak in peak_cuts:
     slope_fit_data = slope_fit_data.where(
             (data['high_time'] < data.loc[peak[0]]['high_time']) |
             (data['high_time'] > data.loc[peak[1]]['high_time']))
-slope_fit_data = slope_fit_data.dropna(axis=0)
+    slope_fit_data = slope_fit_data.dropna(axis=0)
 
 slope_fit_data.plot(linestyle='', marker='x')
 plt.show()
@@ -142,4 +205,4 @@ for train, mf in zip(spike_trans, mirror_factor):
         plt.show()
 
 # now the frequency spikes have been fitted (astoundingly well) the reference frequency
-
+# can be selected. I will use the spike after the first absorption peak as reference of 0
