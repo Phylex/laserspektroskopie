@@ -4,6 +4,8 @@ from scipy.optimize import curve_fit
 from scipy.stats import norm
 import numpy as np
 
+plt.rcParams['figure.figsize'] = (13, 9)
+
 # define the linear function to be fitted
 def lin(x, a, b):
     """A linear function for fitting"""
@@ -122,12 +124,16 @@ for i, ramp in enumerate(ramps):
                                      spike_width*spike_height/2, 0))
         spike_train_params.append((spopt, spcov))
         plt.plot(gplot_time, lorenzian(gplot_time, *spopt),
-                 linestyle='--', color='lightblue')
+                 linestyle='--', color='orange')
+    plt.title("FP-Resonances with corresponding fits")
+    plt.xlabel("t [s]")
+    plt.ylabel("U [V]")
+    plt.grid()
     plt.savefig("fitted_spikes_ramp_{}.pdf".format(i))
     plt.close()
     print("ramp {}".format(i))
     for p in spike_train_params:
-        fwhm = np.sqrt(p[0][1]**2+p[0][0]*p[0][1])-np.sqrt(p[0][1]**2-p[0][0]*p[0][1])/2
+        fwhm = (np.sqrt(p[0][1]**2+p[0][0]*p[0][1])-np.sqrt(p[0][1]**2-p[0][0]*p[0][1]))/2
         print("Spike Location: {:.8f} +- {:.8f}".format(p[0][1], fwhm))
     spike_params.append(spike_train_params)
 
