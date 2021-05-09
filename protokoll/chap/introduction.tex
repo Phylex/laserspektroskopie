@@ -1,0 +1,256 @@
+\chapter{Written preparation}
+
+\textbf{Q}: How strong can the excited state of a two-level system be populated and what happens in the limit of infinitely strong laser intensities? \\
+\textbf{A}: A two level system can be populated up to parity between the levels. Increasing laser input power only increases the rate of relaxation.\\
+\\
+\noindent
+\textbf{Q}: What are the physical causes of the fine and hyperfine splitting? \\
+\textbf{A}: Fine splitting: i) Relativistic mass increase ii) Darwin term iii) Mutual coupling of magnetic moment of electron spin $\vec{\mu}_{s}$ and magnetic field associated with orbital movement of electron $\vec{B}_{l}$. Hyperfine splitting: i) Finite size of nucleus ii) Coupling of $\vec{\mu}_{I}$ and $\vec{B}_{j}$.\\
+\\
+\noindent
+\textbf{Q}: How much smaller is the hyperfine splitting compared to the fine splitting? \\
+\textbf{A}: $\frac{\Delta E_{hf}}{\Delta E_{f}}=\frac{\vec{\mu}_{I}}{\vec{\mu}_{s}}=\frac{m_{e}}{m_{n}}=\frac{1}{1836}$.\\
+\\
+\noindent
+\textbf{Q}: Why is only the $D_{2}$ line in the focus of this experiment? \\
+\textbf{A}: Because the $D_{1}$ line with $\lambda=794.98nm$ is not accessible with the laser used with a wavelength range of $778.99nm-788.4nm$.\\
+\\
+\noindent
+\textbf{Q}: Which parameters influence the free spectral range and the spectral linewidth of a resonator? \\
+\textbf{A}: $FSR\sim\frac{c_{0}}{nl}$ and $\Delta\nu\sim\frac{c_{0}}{nl}\mathcal{F}^{-1}$.\\
+\\
+\noindent
+\textbf{Q}: Why is it impossible to build a laser with a laser medium based on two-level sys- tems? \\
+\textbf{A}: Because a state inversion is not possibile in a two level system.\\
+\\
+\noindent
+\textbf{Q}: How can the laser wavelength be tuned? \\
+\textbf{A}: i) Rotation of diffraction grating ii) Change of temperatur $T$ of laser medium iii) Change of injection current $I_{in}$ of laser diode.\\
+\\
+\noindent
+\textbf{Q}: Which tuning method can be attributed to coarse tuning, which to fine tuning? \\
+\textbf{A}: Rotation of the diffraction grating can be attributed to coarse tuning and the rest to fine tuning.\\
+\\
+\noindent
+\textbf{Q}: How fast are the tuning methods compared to each other? \\
+\textbf{A}: Tuning by the rotation of the diffraction grating is faster.\\
+\\\\
+\noindent
+\textbf{Q}: How is the intensity of a semiconductor laser usually changed? \\
+\textbf{A}: Through placing of neutral density filters into the beam path and rotating of the $\lambda/2$-retarder.\\
+\\
+\noindent
+\textbf{Q}: How does the signal after the reference resonator look like if the laser wavelength is continuously tuned? \\
+\textbf{A}: It looks like in figure \ref{fig:Intres.}.\\
+\\
+\noindent
+\textbf{Q}: Which transitions contribute to the D2 line of Rubidium? \\
+\textbf{A}: $^{85}Rb$, $5^{2}s_{1/2}\leftrightarrow5^{2}p_{3/2}$: $F=2\leftrightarrow F=1$, $F=2\leftrightarrow F=2$, $F=2\leftrightarrow F=3$, $F=3\leftrightarrow F=2$, $F=3\leftrightarrow F=3$, $F=3\leftrightarrow F=4$.\\
+$^{87}Rb$, $5^{2}s_{1/2}\leftrightarrow5^{2}p_{3/2}$: $F=1\leftrightarrow F=0$, $F=1\leftrightarrow F=1$, $F=1\leftrightarrow F=2$, $F=2\leftrightarrow F=1$, $F=2\leftrightarrow F=2$, $F=2\leftrightarrow F=3$.\\
+\\
+\noindent
+\textbf{Q}: Which spectral lines can still be resolved with the common absorption spectroscopy technique and why? \\
+\textbf{A}: Some of the hyperfine spectral lines can still be resolved because their difference is bigger than $1 GHz$, which is the order of the Doppler broadening at room temperature.\\
+\\
+\noindent
+\textbf{Q}: Which lines are usually stronger, the main saturated absorption peaks or the crossover peaks? \\
+\textbf{A}: The main saturated absorption peaks are usually stronger.
+
+\chapter{Aim of the experiment, theoretical basics}
+Optical spectroscopy is a useful method for many reasons. With its assistance it is possible for example to study the interaction between electromagnetic radiation and matter, to detect atoms and molecules and to identify them. In the experiment under consideration we carry out an quantitive investigation of the hyper fine structure of rubidium. The exact techniques we take advantage of for that, are the \textbf{absorption spectroscopy} and the \textbf{Doppler-free saturation spectroscopy}.
+
+Before we dive into the details of the experiment itself, we need to take a look at the theory behind it. For the interaction between an atom or molecule and light to be possible, the resonance condition
+
+\begin{equation}
+\label{E:Res. con.}
+E_2-E_1=h\nu
+\end{equation}
+
+\noindent
+needs to be fulfilled. 
+
+If such an event takes place, we can distinguish between three different cases: \textbf{absorption}, \textbf{stimulated emission} and \textbf{spontaneous emission}. Through absorption an electron is excited from a lower energy level $E_1$ to an higher one $E_2$. During stimulated emission on the other hand an already excited electron at the energy $E_2$ falls upon interaction with a photon of appropriate frequency to a lower lying level $E_1$. In the process an additional photon is created, which travels in the same direction as the stimulating one. When an electron in an excited state of an atom or molecule falls to a lower state without the presence of any light, we talk about spontaneous emission. All three processes are shown schematically in figure \ref{fig:Emisabs.}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15.8cm]{Emisabs.png}
+    \caption{Illustration of absorption, stimulated emission and spontaneous emission.}
+    \label{fig:Emisabs.}
+\end{figure}
+
+When we look out for the hyper fine lines in the spectrum of rubidium, we have to consider that this task is made more difficult by the fact that the absorption lines have a finite linewidth. The phenomena associated with this are the \textbf{natural linewidth}, \textbf{collisional broadening}, \textbf{Doppler broadening} and \textbf{saturation broadening}. The cause of the natural linewidth is Heisenberg's uncertainty principle including the quantities energy $E$ and time $t$. As we can conclude from the already mentioned event of spontaneous emission, an excited state has a finite lifetime $\tau$. This is correlated with a certain energitical uncertainty $\Delta E$ of the corresponding transition. The energy is again related to the frequency through $\Delta E=\hbar \Delta \omega$, which is exactly the natural lindewidth we can see in a recorded spectrum. The line profile we get from this kind of broadening has a Lorentzian shape. In the case of collisional broadening we have to differentiate between elastic and inelastic collisions. During elastic collisions there is no transfer of energy between the two regarded particles, but to the electromagnetic radiation field. This leads to uncorrelated emission processes, whose durations are Poisson distributed around the mean free time. In other words, we have a broadening and shift of the atoms` spectral lines. The mechanism is different for inelastic collisions: The excited electrons of the interacting atoms are given an additional way of relaxation, what causes a shortening of the according lifetime. Like it is with the natural linewidth, this has because of the uncertainty principle a broadening effect. Doppler broadening is obviously based on the Doppler effect, described by the relation
+
+\begin{equation}
+\label{E:Dopp.}
+\omega'=\omega_{0}\left(1-\frac{v_{z}}{c}\right).
+\end{equation}
+
+\noindent
+As we know, the velocities $v_{z}$ are distributed corresponding to the Maxwell-Boltzmann distribution. Thus the according line shape is of Gaussian character. Under usual ambient conditions the Doppler broadening is two orders of magnitudes larger than the natural broadening. But if we have a similar contribution of the former two, then the overlapping generates a Voigt profile. All of the previously stated facts are graphically shown in figure \ref{fig:Dopp.}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{Dopp.png}
+    \caption{Resulting line shapes due to natural broadening and Doppler broadening.}
+    \label{fig:Dopp.}
+\end{figure}
+
+\noindent
+What happens while saturation broadening is basically the following: We get an additional (partial) saturation of the wing-frequencies in the finite width of the atomic energy levels and the frequency interval of the laser.
+
+As already mentioned, the spectrum, which we'll be looking at, stems from the alkali metal rubidium Rb. But what also has to be taken into account is, that rubidium has two different isotopes: About $72.17\%$ of its natural abundance is $^{85}Rb$ and $27.83\%$ $^{87}Rb$. This results in a so called \textbf{isotopic shift} between the hyper fine lines of those two. Since the properties like spin, mass, volume and charge distribution of the respective nuclei are different, we get this additional shift (see figure \ref{fig:term.}).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15.8cm]{term.png}
+    \caption{Term diagram of $^{85}Rb$ and $^{87}Rb$. The transition highlighted in red is the $D_{1}$ transition and the one in blue the $D_{2}$ transition.}
+    \label{fig:term.}
+\end{figure}
+
+Not all transitions between hyper fine levels, that one could think of, are possibile. One has to keep in mind, that the selection rules have to be followed:
+
+\begin{equation}
+\label{E:Deltas}
+\Delta s=0,
+\end{equation}
+
+\begin{equation}
+\label{E:Deltal}
+\Delta l=\pm1,
+\end{equation}
+
+\begin{equation}
+\label{E:Deltaj}
+\Delta j=0,\pm1 \;\; \text{except} \;\; j=0\leftrightarrow j=0,
+\end{equation}
+
+\begin{equation}
+\label{E:DeltaF}
+\Delta F=0,\pm1 \;\; \text{except} \;\; F=0\leftrightarrow F=0.
+\end{equation}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=13cm]{Intres.png}
+    \caption{Transmitted intensity as a function of frequency. The gray curve stands for the eigenmodes of a resonator of $F\approx30$. The blue eigenmodes on the other hand belong to a resonator of same finesse but five times the length.}
+    \label{fig:Intres.}
+\end{figure}
+
+Now that we know about the properties of our rubidium atoms and their interaction with light, which are important for the understanding of the experiment, we can learn about how some devices, used in the experiment, work in principle. First we'll discuss the \textbf{Fabry-Pérot resonator}. It consists of two opposing mirrors with distance $l$. When light enters from one side, it gets reflected multiple times and it forms a standing wave. The resonance condition for the wavelength is
+
+\begin{equation}
+\label{E:Deltaj}
+\lambda_{m}=\frac{2l}{m} \;\; m \in \mathbb{N}.
+\end{equation}
+
+\noindent
+The equivalent condition for the frequency is
+
+\begin{equation}
+\label{E:Deltaj}
+\nu_{m}=\frac{c}{2l}m,
+\end{equation}
+
+\noindent
+That means that there exists a certain distance in the frequency space between two adjacent resonator modes. This quantity is called \textbf{free spectral range}:
+
+\begin{equation}
+\label{E:Deltaj}
+FSR=\nu_{m}-\nu_{m-1}=\frac{c_{0}}{2nl},
+\end{equation}
+
+\noindent
+where $c_{0}$ is the speed of light in vacuum and $n$ the index of refraction. Also the $FSR$ indicates the cycle frequency of the light in the resonator. Related to that is another quantity of interest, which is called \textbf{finesse}:
+
+\begin{equation}
+\label{E:Deltaj}
+\mathcal{F}=\frac{FSR}{\Delta\nu}=\frac{\pi\sqrt{R}}{1-R}.
+\end{equation}
+
+\noindent
+As can be seen, it depends solely on the resonator's losses. That means for the spectral line width
+
+\begin{equation}
+\label{E:speclinwid}
+\Delta\nu=\gamma=\frac{c_{0}}{2nl}\mathcal{F}^{-1}.
+\end{equation}
+
+\noindent
+How the amount of the transmitted intensity in relation to the incoming intensity of the light $\frac{I_{t}}{I_{in}}$ depends on said quantities for different values of the frequency $\nu$ is demonstrated in figure \ref{fig:Intres.}. 
+
+A problem with the ordinary Fabry-Pérot resonator is that after a slight misalignment of the direction of the light the electromagnetic wave leaves the space between the mirrors pretty quickly. The corrective is a \textbf{confocal resonator}. The used mirrors now posses a finite curvature $r=2f$ for more stability. The distance between them is set to $l=2f$. A look at figure \ref{fig:Confres.} makes it clear, that the path length of the light changes to double the amount. Consequently we get a change of the formulas of our resonance condition to
+
+\begin{equation}
+\label{E:Deltaj}
+\lambda_{m}=\frac{4l}{m}	\;\; m \in \mathbb{N},
+\end{equation}
+
+\noindent
+the free spectral range to
+
+\begin{equation}
+\label{E:Deltaj}
+FSR=\frac{c_{0}}{4nl},
+\end{equation}
+
+\noindent
+and the finesse to
+
+\begin{equation}
+\label{E:Deltaj}
+\mathcal{F}=\frac{\pi R}{1-R^{2}}.
+\end{equation}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=10cm]{Confres.png}
+    \caption{The beam path in a confocal resonator.}
+    \label{fig:Confres.}
+\end{figure}
+
+We can't take advantage of a resonator without a light source. Here we use a \textbf{laser}, which is an acronym for ’Light amplification by stimulated emission of radiation’. The basic function principle for  a laser is the following: Inside we have a laser medium, which contains the atoms or molecules, that we can excite. That's the task of the energy pump to the extent that we get a population inversion. Now the majority of the particles are excited and absorption is dominated by stimulated emission. That means that we get more and more photons, so in other words: lights is amplified. This effect can be increased, as the laser medium is located inside of a resonator. The result is strong output radiation, which is coherent over a certain distance, monochromatic, collimated, and polarized.
+
+The frequency range that is needed to access the $D_{2}$ transition of our rubidium atoms lies in the infrared region. For that purpose \textbf{semiconductor lasers} are generally utilized. Let's find out how the above explained function principle is applied in this case. Picking up the band structure representation for this description is the most sensible approach (see figure \ref{fig:Semiconlas.}). i) Initially there is a p-type and a n-type semiconductor with their respective Fermi energy $E^{p}_{F}$ and $E^{n}_{F}$ and their energy gap $E_{G}$. ii) After creating the p-n junction the charge concentrations are equalized through exchange of free charge carriers. This takes place until the resulting voltage compensates the diffusion voltage. The system reacts with a shift of both chemical potentials so there is only one Fermi energy $E_{F}$ and the band structure gets deformed accordingly. At the end the p side is charged positively, the n side negatively and in between is the depletion region, marked in blue. iii) If now an external voltage is applied in forward bias, then more charges accumulate in the depletion region and the Fermi energies shift against one another. Electrons in the conduction band can now move to the valence band and photons of energy $E_{G}$ are sent out. iv) So all in all the semiconductor materials serve as laser medium, the applied voltage represents the energy pump and for the right constellation of refractive indices of the semiconductor and the surrounding material the plane end faces of the semiconductor play the role of a resonator. Although the injection current $I_{in}$ needs to reach at least the threshold current $I_{th}$ for a necessary population inversion to occur.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15.8cm]{Semiconlas.png}
+    \caption{The beam path in a confocal resonator.}
+    \label{fig:Semiconlas.}
+\end{figure}
+
+In many aspects semiconductor lasers are advantageous but one major disadvantage is the large spectral linewidth of the resonator because of the small $l\lesssim mm$ according to equation \ref{E:speclinwid}. The solution is an additional external resonator which makes the whole apparatus to a so called \textbf{external cavity diode laser} (ECDL). An example is depicted in figure \ref{fig:ECDL}. The Littrow lattice has the purpose to enhance the free spectral range and thus achieve a single-mode operation. One part of the laser light is reflected according to Snell's law and the other part is reflected back. So the output coupler of the laser diode has to be also a good input coupler.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=11cm]{ECDL.png}
+    \caption{A tunable ECDL in Littrow configuration.}
+    \label{fig:ECDL}
+\end{figure}
+
+Lastly in this theory part it's going to be described, how the two different spectroscopy methods, used in this experiment, work. Absorption spectroscopy is in principle very simple: We change the frequency of the light permanently and measure the transmitted intenstiy with a photodiode. Saturation spectroscopy is a little more complicated with the advantage, that it's Doppler-free. This is very useful, as the Doppler broadening prevents us from seeing all the hyper fine lines in the absorption spectroscopy. The way it's done is the following: There a two overlapping beams of same wavelength but opposite direction. One is the strong pump beam and the other the weak probe beam, whereas only the intensity of the probe beam is detected. Because of the Doppler effect, just in the case of particles with velocity $v_{z}=0$ both beams are absorbed. As the pump beam has a much higher intensity, it saturates the given transition. Hence the probe beam can't be absorbed and we get a so called \textbf{Lamb-dip} in the spectrum. This is visually shown in figure \ref{fig:Lamb}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=9cm]{Lamb.png}
+    \caption{Doppler-broadened absorption spectrum with a Lamb-dip at $\lambda_{0}$.}
+    \label{fig:Lamb}
+\end{figure}
+
+\chapter{Experimental setup}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=15.8cm]{Expset.png}
+    \caption{Experimental setup for i) absorption spectroscopy and ii) saturation spectroscopy.\\ A: aperture, M: mirror, P: platelet, L: lens, FPI: Fabry-Pérot interferometer, PBS: polarizing beam splitter, ND: neutral density filter, PD: photodiode}
+    \label{fig:Expset}
+\end{figure}
+
+\noindent
+A sketch of the experimental setup is given by figure \ref{fig:Expset}. Concerning the photodiode it has to be kept in mind, that in order to measure the intensity changes properly, the photo current should never saturate. The ND-filers are there to weaken the laser beam. That is needed, since diverse complications come along with change of the intensity directly at the laser. Every ND-filter has a value for their optical density OD, which occurs in the Beer-Lambert law $I_{t}=T\times I_{0}=10^{-OD}\times I_{0}$. To alter the polarization of the beam retarder waveplates are utilized. In the experiment we have half-wave plates ($\lambda/2$) and quarter-wave plates ($\lambda/4$). $\lambda/2$-retarder cause a phase shift of $\phi=\pi$. Also linearly polarized light can be shifted by rotating the retarder plate. $\lambda/4$-retarder cause a phase shift of $\phi=\pi/2$. So linearly polarized light is transformed into circularly polarized light and the other way around. The platelet as well as the polarizing beam splitter split the incoming beam into two beams with different directions. Just that the quartz platelet reflects only a little light and the PBS splits light of horizontal and vertical polarization. Operation of the laser is possible through the laser controller. It consists of four modules: The monitor unit DC 110, the current control unit DCC 110, the temperature control unit DTC 110 and the scan control unit SC 110. One has to be cautious while starting and stoping the laser, as there is a certain order of actions to take to do this correctly. Also the general alignment and adjustment rules have to be followed, to make sure to protect oneself and the devices from any damage. 
+
+\chapter{Experiment execution}
+
+Firstly the configuration as shown in figure \ref{fig:Expset} has to be set up. The ND-filter for the recording of the absorption spectrum has to have an $OD\geq 3.0$. The injection current needs to be zero at the beginning and the power supply of the PD needs to be plugged in. Before the recording of a spectrum the lasing threshold hast to be determined. Thereto increase $I_{in}$ slowly until a signal on the monitor of the oscilloscope can be seen. After that make adjustments on the oscilloscope, so the signal can be seen properly. 
+
+Now the absorption spectrum can be recorded. At the start the focus is on the FPI signal. Set $I_{in} \approx 45mA$. and the amplitude of the SC 110 to approximately 6.5. After that set the oscilloscope trigger on the trigger signal of the SC 110. The frequency range should be set to 4. There might be again adjustments of the oscilloscope settings needed. From now on, detect in addition the signal of the Rb gas cell. For that rotate the $\lambda/2$-retarder until the signal appears on your oscilloscope display. Adjustments to the injection current, the offset and on the oscilloscope allow you to get broad dips in your spectrum. Lastly don't forget to save the image and the corresponding waveform data. Subsequently to record the saturation spectrum, the setup has again to be altered. This time a ND-filter with $OD\approx1.6$ is appropriate. Here the overlap of the pump and probe beam additionally has to be checked. Make analogous adjustments to the ones in the first experimental task until you get a favorable spectrum. Again save the data for the evaluation. 
